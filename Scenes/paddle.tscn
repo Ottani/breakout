@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b4yqt20fg36v4"]
+
+[ext_resource type="Script" uid="uid://dic3mes0qt5l6" path="res://Scenes/paddle.gd" id="1_krcey"]
+[ext_resource type="Texture2D" uid="uid://dj2jhqtykw7cm" path="res://Assets/breakout.png" id="1_nxw3c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ffim"]
+size = Vector2(64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfk5q"]
+atlas = ExtResource("1_nxw3c")
+region = Rect2(0, 0, 64, 16)
+
+[node name="Paddle" type="CharacterBody2D" unique_id=2006980702]
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_krcey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=422660871]
+shape = SubResource("RectangleShape2D_8ffim")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1905120137]
+texture = SubResource("AtlasTexture_xfk5q")

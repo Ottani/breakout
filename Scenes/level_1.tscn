@@ -1,0 +1,105 @@
+[gd_scene format=4 uid="uid://6ifm3eoe0fpc"]
+
+[ext_resource type="Script" uid="uid://cpk0w6f0sf4og" path="res://Scenes/level_1.gd" id="1_7p6j4"]
+[ext_resource type="PackedScene" uid="uid://b4yqt20fg36v4" path="res://Scenes/paddle.tscn" id="1_vk57k"]
+[ext_resource type="PackedScene" uid="uid://bwthlo64pi2gx" path="res://Scenes/ball.tscn" id="2_8ffim"]
+[ext_resource type="Texture2D" uid="uid://dj2jhqtykw7cm" path="res://Assets/breakout.png" id="3_xfk5q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ffim"]
+size = Vector2(608, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vk57k"]
+size = Vector2(16, 360)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7p6j4"]
+texture = ExtResource("3_xfk5q")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/terrains_peering_bit/right_side = 0
+1:1/0/terrains_peering_bit/bottom_side = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/right_side = 0
+2:1/0/terrains_peering_bit/bottom_side = 0
+2:1/0/terrains_peering_bit/left_side = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/terrains_peering_bit/right_side = 0
+1:2/0/terrains_peering_bit/bottom_side = 0
+1:2/0/terrains_peering_bit/top_side = 0
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 0
+3:1/0/terrains_peering_bit/bottom_side = 0
+3:1/0/terrains_peering_bit/left_side = 0
+3:2/0 = 0
+3:2/0/terrain_set = 0
+3:2/0/terrain = 0
+3:2/0/terrains_peering_bit/bottom_side = 0
+3:2/0/terrains_peering_bit/left_side = 0
+3:2/0/terrains_peering_bit/top_side = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+
+[sub_resource type="TileSet" id="TileSet_6444e"]
+terrain_set_0/mode = 2
+terrain_set_0/terrain_0/name = "WallTerrain"
+terrain_set_0/terrain_0/color = Color(0.6830226, 1.1214465e-05, 0.46621096, 1)
+sources/0 = SubResource("TileSetAtlasSource_7p6j4")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfk5q"]
+size = Vector2(639, 65)
+
+[node name="Level1" type="Node2D" unique_id=1142211454]
+script = ExtResource("1_7p6j4")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2114788458]
+physics_interpolation_mode = 2
+
+[node name="Paddle" parent="." unique_id=2006980702 instance=ExtResource("1_vk57k")]
+position = Vector2(0, 156)
+
+[node name="Ball" parent="." unique_id=535692065 instance=ExtResource("2_8ffim")]
+position = Vector2(-77, -2)
+
+[node name="Walls" type="Node2D" parent="." unique_id=1467499190]
+position = Vector2(312, 0)
+
+[node name="TopWall" type="StaticBody2D" parent="Walls" unique_id=200686745]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall" unique_id=31655801]
+position = Vector2(-312, -172)
+shape = SubResource("RectangleShape2D_8ffim")
+
+[node name="RightWall" type="StaticBody2D" parent="Walls" unique_id=130051385]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall" unique_id=1629707699]
+shape = SubResource("RectangleShape2D_vk57k")
+
+[node name="LeftWall" type="StaticBody2D" parent="Walls" unique_id=1745704922]
+position = Vector2(-624, 0)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall" unique_id=795152369]
+shape = SubResource("RectangleShape2D_vk57k")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Walls" unique_id=301523458]
+position = Vector2(8, -4)
+tile_map_data = PackedByteArray("AADY/woAAAABAAIAAADY/wkAAAABAAIAAADY/wsAAAABAAIAAADY/wgAAAABAAIAAADY/wcAAAABAAIAAADY/wYAAAABAAIAAADY/wUAAAABAAIAAADY/wQAAAABAAIAAADY/wMAAAABAAIAAADY/wIAAAABAAIAAADY/wEAAAABAAIAAADY/wAAAAABAAIAAADY////AAABAAIAAADY//7/AAABAAIAAADY//3/AAABAAIAAADY//z/AAABAAIAAADY//v/AAABAAIAAADY//r/AAABAAIAAADY//n/AAABAAIAAADY//j/AAABAAIAAADY//f/AAABAAIAAADY//b/AAABAAIAAADZ//X/AAACAAEAAADa//X/AAACAAEAAADY//X/AAABAAEAAADb//X/AAACAAEAAADc//X/AAACAAEAAADd//X/AAACAAEAAADe//X/AAACAAEAAADf//X/AAACAAEAAADg//X/AAACAAEAAADh//X/AAACAAEAAADi//X/AAACAAEAAADj//X/AAACAAEAAADk//X/AAACAAEAAADl//X/AAACAAEAAADm//X/AAACAAEAAADn//X/AAACAAEAAADo//X/AAACAAEAAADp//X/AAACAAEAAADq//X/AAACAAEAAADr//X/AAACAAEAAADs//X/AAACAAEAAADt//X/AAACAAEAAADu//X/AAACAAEAAADv//X/AAACAAEAAADw//X/AAACAAEAAADx//X/AAACAAEAAADy//X/AAACAAEAAADz//X/AAACAAEAAAD0//X/AAACAAEAAAD1//X/AAACAAEAAAD2//X/AAACAAEAAAD3//X/AAACAAEAAAD4//X/AAACAAEAAAD5//X/AAACAAEAAAD6//X/AAACAAEAAAD7//X/AAACAAEAAAD8//X/AAACAAEAAAD9//X/AAACAAEAAAD+//X/AAACAAEAAAD///f/AAADAAIAAAD///j/AAADAAIAAAD///r/AAADAAIAAAD///n/AAADAAIAAAD/////AAADAAIAAAD///7/AAADAAIAAAD///3/AAADAAIAAAD///z/AAADAAIAAAD///v/AAADAAIAAAD//wAAAAADAAIAAAD//wEAAAADAAIAAAD//wIAAAADAAIAAAD//wMAAAADAAIAAAD//wQAAAADAAIAAAD//wUAAAADAAIAAAD//wYAAAADAAIAAAD//wcAAAADAAIAAAD//wgAAAADAAIAAAD//wkAAAADAAIAAAD//woAAAADAAIAAAD//wsAAAADAAIAAAD///b/AAADAAIAAAD///X/AAADAAEAAAA=")
+tile_set = SubResource("TileSet_6444e")
+
+[node name="DeathArea" type="Area2D" parent="." unique_id=531254916]
+position = Vector2(0, 180)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea" unique_id=2002425389]
+position = Vector2(0.5, 14.5)
+shape = SubResource("RectangleShape2D_xfk5q")
