@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://be6m7brci0ic2"]
+
+[ext_resource type="Texture2D" uid="uid://dj2jhqtykw7cm" path="res://Assets/breakout.png" id="1_lvh1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqb1c"]
+size = Vector2(48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8nvr"]
+atlas = ExtResource("1_lvh1d")
+region = Rect2(64, 0, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k76ut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8nvr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Brick" type="StaticBody2D" unique_id=802883576 groups=["bricks"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1874286396]
+shape = SubResource("RectangleShape2D_hqb1c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=570167713]
+sprite_frames = SubResource("SpriteFrames_k76ut")

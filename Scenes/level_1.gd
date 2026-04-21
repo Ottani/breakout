@@ -1,11 +1,21 @@
 extends Node2D
 
+@onready var brick_manager = $BrickManager as BrickManager
+var ball_scene: PackedScene = preload("res://Scenes/ball.tscn")
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	brick_manager.create_bricks(10, 4, 10)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action("cancel"):
+		get_tree().quit()
+
+
+func _on_death_area_body_entered(body: Node2D) -> void:
+	print("Body entered: " + body.name)
+	if body is Ball:
+		body.queue_free()
+		await get_tree().create_timer(0.5).timeout
+		var ball := ball_scene.instantiate() as Ball
+		add_child(ball)

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b6lu5c03xlch3"]
+
+[ext_resource type="Script" uid="uid://cy116avjnkrnc" path="res://Scenes/brick_manager.gd" id="1_ioduj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ioduj"]
+size = Vector2(600, 200)
+
+[node name="BrickManager" type="Node2D" unique_id=341309759]
+script = ExtResource("1_ioduj")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1601033929]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=276366360]
+shape = SubResource("RectangleShape2D_ioduj")
