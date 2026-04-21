@@ -11,6 +11,8 @@ atlas = ExtResource("1_d60mj")
 region = Rect2(0, 16, 16, 16)
 
 [node name="Ball" type="CharacterBody2D" unique_id=535692065]
+collision_layer = 4
+collision_mask = 11
 script = ExtResource("1_ij5cq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=673010961]

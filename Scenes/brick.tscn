@@ -21,6 +21,7 @@ animations = [{
 }]
 
 [node name="Brick" type="StaticBody2D" unique_id=802883576 groups=["bricks"]]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1874286396]
 shape = SubResource("RectangleShape2D_hqb1c")

@@ -11,6 +11,7 @@ atlas = ExtResource("1_nxw3c")
 region = Rect2(0, 0, 64, 16)
 
 [node name="Paddle" type="CharacterBody2D" unique_id=2006980702]
+collision_layer = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_krcey")

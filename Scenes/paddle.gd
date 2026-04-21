@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Paddle
 
 @export var SPEED: float = 250.0
 @onready var sprite: Sprite2D = $Sprite2D as Sprite2D
