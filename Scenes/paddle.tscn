@@ -21,3 +21,6 @@ shape = SubResource("RectangleShape2D_8ffim")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1905120137]
 texture = SubResource("AtlasTexture_xfk5q")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1225105225]
+position = Vector2(25, -17)

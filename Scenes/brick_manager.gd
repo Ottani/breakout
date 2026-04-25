@@ -11,7 +11,7 @@ func _ready() -> void:
 	rect = area.shape.get_rect()
 
 
-func create_bricks(cols: int, rows: int, gap: int):
+func create_bricks(cols: int, rows: int, gap: int) -> int:
 	var total_width: float = (cols * brick_size.x) + ((cols - 1) * gap)
 	var total_height: float = (rows * brick_size.y) + ((rows - 1) * gap)
 	var start_x: float = area.position.x - (total_width / 2) + (brick_size.x / 2)
@@ -21,8 +21,8 @@ func create_bricks(cols: int, rows: int, gap: int):
 		for i in cols:
 			var brick: StaticBody2D = brick_scene.instantiate()
 			brick.position = Vector2(x, y)
-			print (x, y)
 			x += brick_size.x + gap
 			add_child(brick)
 		x = start_x
 		y += brick_size.y + gap
+	return cols * rows

@@ -7,6 +7,23 @@
 [ext_resource type="PackedScene" uid="uid://b6lu5c03xlch3" path="res://Scenes/brick_manager.tscn" id="5_6444e"]
 [ext_resource type="PackedScene" uid="uid://bqxg435sjxs56" path="res://Scenes/ui.tscn" id="6_evi0p"]
 
+[sub_resource type="Gradient" id="Gradient_evi0p"]
+offsets = PackedFloat32Array(0.548718, 1)
+colors = PackedColorArray(0.1882353, 0.1882353, 0.1882353, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lsmp6"]
+gradient = SubResource("Gradient_evi0p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xrdnt"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(320, 180, 1)
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 10, 0)
+color_ramp = SubResource("GradientTexture1D_lsmp6")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ffim"]
 size = Vector2(608, 16)
 
@@ -64,14 +81,28 @@ size = Vector2(639, 60)
 [node name="Level1" type="Node2D" unique_id=1142211454]
 script = ExtResource("1_7p6j4")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=742079145]
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0.09411765, 0.09411765, 0.09411765, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1395200000]
+amount = 100
+preprocess = 5.0
+process_material = SubResource("ParticleProcessMaterial_xrdnt")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2114788458]
 physics_interpolation_mode = 2
 
 [node name="Paddle" parent="." unique_id=2006980702 instance=ExtResource("1_vk57k")]
 position = Vector2(0, 156)
+SPEED = 250.0
 
-[node name="Ball" parent="." unique_id=535692065 instance=ExtResource("2_8ffim")]
+[node name="Ball" parent="." unique_id=535692065 node_paths=PackedStringArray("paddle") instance=ExtResource("2_8ffim")]
 position = Vector2(-77, -2)
+paddle = NodePath("../Paddle")
 
 [node name="Walls" type="Node2D" parent="." unique_id=1467499190]
 position = Vector2(312, 0)

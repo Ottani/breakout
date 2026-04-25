@@ -1,24 +1,50 @@
 extends CharacterBody2D
 class_name Ball
 
+enum State { ATTACHED, MOVING }
 
 @export var speed: float = 300.0
 @export var paddle_delta: float = 10.0
+@export_range(0.5, 5.0) var bounce_influence: float = 1.7
+@export_range(0.01, 0.5) var min_y_tilt = 0.3
+@export var paddle: Paddle
+
+var current_state = State.ATTACHED
 
 
 func _ready():
-	velocity = Vector2(1, -1).normalized() * speed
+	reset()
+
+
+func reset():
+	velocity = Vector2.ZERO
+	current_state = State.ATTACHED
+
+
+func _hit_paddle() -> void:
+	var distance := (global_position.x - paddle.global_position.x) / paddle.half_width
+	distance = clampf(distance, -1.0, 1.0)
+	var direction = Vector2(distance * bounce_influence, -1).normalized()
+	velocity = direction * speed
 
 
 func _physics_process(delta: float):
-	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
-	if collision:
-		var node_hit := collision.get_collider() as Node2D
-		if node_hit is Paddle:
-			var distance: float = (position.x - node_hit.position.x) / paddle_delta
-			var direction = Vector2(distance, -1).normalized()
-			velocity = direction * speed
-		else:
-			velocity = velocity.bounce(collision.get_normal())
-			if node_hit and node_hit.is_in_group("bricks"):
-				node_hit.queue_free()
+	match current_state:
+		State.ATTACHED:
+			global_position = paddle.get_anchor()
+			if Input.is_action_just_pressed("launch"):
+				velocity = Vector2(randf_range(-0.75, 0.75), -1.0).normalized() * speed
+				current_state = State.MOVING
+		State.MOVING:		
+			var collision: KinematicCollision2D = move_and_collide(velocity * delta)
+			if collision:
+				var node_hit := collision.get_collider() as Node2D
+				if node_hit is Paddle:
+					_hit_paddle()
+				else:
+					velocity = velocity.bounce(collision.get_normal())
+					if abs(velocity.y) < min_y_tilt:
+						velocity.y = sign(velocity.y) * min_y_tilt
+						velocity = velocity.normalized() * speed
+					if node_hit and node_hit.is_in_group("bricks"):
+						SignalBus.brick_hit.emit(node_hit)
