@@ -15,10 +15,11 @@ jobs:
           relative_project_path: ./
           archive_output: false
           cache: true
+          use_preset_export_path: true
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: builds/web/
+          path: build/web/
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
 
