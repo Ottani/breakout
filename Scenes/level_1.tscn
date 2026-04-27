@@ -98,7 +98,6 @@ physics_interpolation_mode = 2
 
 [node name="Paddle" parent="." unique_id=2006980702 instance=ExtResource("1_vk57k")]
 position = Vector2(0, 156)
-SPEED = 250.0
 
 [node name="Ball" parent="." unique_id=535692065 node_paths=PackedStringArray("paddle") instance=ExtResource("2_8ffim")]
 position = Vector2(-77, -2)
@@ -142,6 +141,6 @@ shape = SubResource("RectangleShape2D_xfk5q")
 [node name="BrickManager" parent="." unique_id=341309759 instance=ExtResource("5_6444e")]
 position = Vector2(0, -59)
 
-[node name="UI" parent="." unique_id=1207767725 instance=ExtResource("6_evi0p")]
+[node name="UI" parent="." unique_id=2025569689 instance=ExtResource("6_evi0p")]
 
 [connection signal="body_entered" from="DeathArea" to="." method="_on_death_area_body_entered"]
