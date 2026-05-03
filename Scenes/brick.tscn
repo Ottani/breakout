@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://be6m7brci0ic2"]
 
-[ext_resource type="Script" uid="uid://w3t2x7lduno7" path="res://Scenes/brick.gd" id="1_hqb1c"]
+[ext_resource type="Script" uid="uid://w3t2x7lduno7" path="res://Scripts/brick.gd" id="1_hqb1c"]
 [ext_resource type="Texture2D" uid="uid://dj2jhqtykw7cm" path="res://Assets/breakout.png" id="1_lvh1d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqb1c"]

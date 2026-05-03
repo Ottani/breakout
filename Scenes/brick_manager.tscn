@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b6lu5c03xlch3"]
 
-[ext_resource type="Script" uid="uid://cy116avjnkrnc" path="res://Scenes/brick_manager.gd" id="1_ioduj"]
+[ext_resource type="Script" uid="uid://cy116avjnkrnc" path="res://Scripts/brick_manager.gd" id="1_ioduj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ioduj"]
 size = Vector2(600, 200)

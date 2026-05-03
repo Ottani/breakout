@@ -1,7 +1,10 @@
 extends Node2D
 
 @onready var brick_manager = $BrickManager as BrickManager
-@onready var ball: Ball = $Ball
+@onready var ball = $Ball as Ball
+
+const pause_scene = preload("res://Scenes/pause_menu.tscn")
+
 
 var bricks_left: int = 0
 var lives: int = 3
@@ -18,8 +21,9 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action("cancel"):
-		get_tree().quit()
+	if event.is_action_pressed("cancel"):
+		add_child(pause_scene.instantiate())
+		get_tree().root.set_input_as_handled()
 
 
 func _on_death_area_body_entered(body: Node2D) -> void:
