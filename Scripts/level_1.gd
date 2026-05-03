@@ -28,9 +28,13 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_death_area_body_entered(body: Node2D) -> void:
 	if body is Ball:
+		ball.current_state = Ball.State.DYING
 		lives -= 1
 		SignalBus.life_updated.emit(lives)
-		ball.reset()
+		var tween = create_tween()
+		tween.tween_property(ball, 'scale', Vector2.ZERO, 0.4)\
+			.set_ease(Tween.EASE_IN)
+		tween.tween_callback(ball.reset)
 
 
 func _on_brick_hit(brick: Brick) -> void:
