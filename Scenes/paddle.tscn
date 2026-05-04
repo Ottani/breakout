@@ -6,9 +6,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ffim"]
 size = Vector2(64, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_krcey"]
+atlas = ExtResource("1_nxw3c")
+region = Rect2(17, 0, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xfk5q"]
 atlas = ExtResource("1_nxw3c")
-region = Rect2(0, 0, 64, 16)
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe6ia"]
+atlas = ExtResource("1_nxw3c")
+region = Rect2(48, 0, 16, 16)
 
 [node name="Paddle" type="CharacterBody2D" unique_id=2006980702]
 collision_layer = 2
@@ -19,8 +27,16 @@ script = ExtResource("1_krcey")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=422660871]
 shape = SubResource("RectangleShape2D_8ffim")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1905120137]
+[node name="MiddleSprite" type="Sprite2D" parent="." unique_id=1694595005]
+texture = SubResource("AtlasTexture_krcey")
+
+[node name="LeftSprite" type="Sprite2D" parent="." unique_id=1905120137]
+position = Vector2(-24, 0)
 texture = SubResource("AtlasTexture_xfk5q")
+
+[node name="RightSprite" type="Sprite2D" parent="." unique_id=507735564]
+position = Vector2(24, 0)
+texture = SubResource("AtlasTexture_fe6ia")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1225105225]
 position = Vector2(25, -17)

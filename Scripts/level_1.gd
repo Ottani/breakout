@@ -4,7 +4,7 @@ extends Node2D
 @onready var ball = $Ball as Ball
 
 const pause_scene = preload("res://Scenes/pause_menu.tscn")
-
+const death_scene = preload("res://Scenes/death_ui.tscn")
 
 var bricks_left: int = 0
 var lives: int = 3
@@ -31,10 +31,14 @@ func _on_death_area_body_entered(body: Node2D) -> void:
 		ball.current_state = Ball.State.DYING
 		lives -= 1
 		SignalBus.life_updated.emit(lives)
-		var tween = create_tween()
+		var tween := create_tween()
 		tween.tween_property(ball, 'scale', Vector2.ZERO, 0.4)\
 			.set_ease(Tween.EASE_IN)
-		tween.tween_callback(ball.reset)
+		await tween.finished
+		if lives == 0:
+			add_child(death_scene.instantiate())
+		else:
+			ball.reset()
 
 
 func _on_brick_hit(brick: Brick) -> void:

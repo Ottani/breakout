@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://d1n6gvbdtjcxj"]
+
+[ext_resource type="Script" uid="uid://bc64iclrtrqth" path="res://Scripts/death_ui.gd" id="1_1dd5l"]
+[ext_resource type="FontFile" uid="uid://cyt1iwpwborss" path="res://Assets/Kenney Future.ttf" id="2_4u8u3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ulvok"]
+font = ExtResource("2_4u8u3")
+font_size = 48
+font_color = Color(0.66271967, 0.011181556, 0.047854938, 1)
+outline_size = 1
+outline_color = Color(0.29803923, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="DeathUI" type="CanvasLayer" unique_id=1341276489]
+process_mode = 3
+script = ExtResource("1_1dd5l")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1599457819]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.24313726)
+
+[node name="Control" type="MarginContainer" parent="." unique_id=432661311]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1299060237]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer" unique_id=126400517]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Game Over"
+label_settings = SubResource("LabelSettings_ulvok")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TryAgainButton" type="Button" parent="Control/VBoxContainer" unique_id=2062328371]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Try again"
+
+[connection signal="pressed" from="Control/VBoxContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
