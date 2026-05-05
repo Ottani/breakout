@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bid18oh6id54a"]
+
+[ext_resource type="Script" uid="uid://dlqw6a6kww7rt" path="res://Scripts/power_up.gd" id="1_p3i06"]
+[ext_resource type="SpriteFrames" uid="uid://dwdft652gp6ii" path="res://Assets/power_ups_animations.tres" id="2_6otjv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvvw4"]
+size = Vector2(14, 12)
+
+[node name="PowerUpLife" type="Area2D" unique_id=1032528675]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_p3i06")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=81753619]
+shape = SubResource("RectangleShape2D_xvvw4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1750451665]
+sprite_frames = ExtResource("2_6otjv")
+animation = &"life"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

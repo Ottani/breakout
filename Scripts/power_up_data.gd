@@ -1,0 +1,9 @@
+extends Resource
+class_name PowerUpData
+
+enum Type { LIFE, WIDE_PADDLE, FAST_BALL }
+
+@export var type: Type
+@export var speed: float = 150.0
+@export var animation_name: String # This must match the name in your .tres file
+@export_range(0, 100) var rarity: int = 50

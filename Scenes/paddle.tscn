@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://dic3mes0qt5l6" path="res://Scripts/paddle.gd" id="1_krcey"]
 [ext_resource type="Texture2D" uid="uid://dj2jhqtykw7cm" path="res://Assets/breakout.png" id="1_nxw3c"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ffim"]
-size = Vector2(64, 16)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krcey"]
+radius = 8.0
+height = 64.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_krcey"]
 atlas = ExtResource("1_nxw3c")
@@ -25,7 +26,8 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_krcey")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=422660871]
-shape = SubResource("RectangleShape2D_8ffim")
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_krcey")
 
 [node name="MiddleSprite" type="Sprite2D" parent="." unique_id=1694595005]
 texture = SubResource("AtlasTexture_krcey")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerUpData" format=3 uid="uid://ccmjss7q7u13c"]
+
+[ext_resource type="Script" uid="uid://hgxbg7nlcpu4" path="res://Scripts/power_up_data.gd" id="1_wlrko"]
+
+[resource]
+script = ExtResource("1_wlrko")
+type = 1
+animation_name = "wide"
+rarity = 25
+metadata/_custom_type_script = "uid://hgxbg7nlcpu4"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PowerUpData" format=3 uid="uid://bti5wacwbcoyr"]
+
+[ext_resource type="Script" uid="uid://hgxbg7nlcpu4" path="res://Scripts/power_up_data.gd" id="1_gd4rr"]
+
+[resource]
+script = ExtResource("1_gd4rr")
+type = 2
+speed = 50.0
+animation_name = "fast"
+rarity = 75
+metadata/_custom_type_script = "uid://hgxbg7nlcpu4"

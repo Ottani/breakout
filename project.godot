@@ -26,6 +26,7 @@ window/size/viewport_height=360
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
 
 [dotnet]
 
@@ -70,6 +71,7 @@ launch={
 2d_physics/layer_2="paddle"
 2d_physics/layer_3="ball"
 2d_physics/layer_4="bricks"
+2d_physics/layer_5="powerup"
 
 [physics]
 

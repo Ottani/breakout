@@ -1,10 +1,15 @@
 extends Node2D
 
-@onready var brick_manager = $BrickManager as BrickManager
-@onready var ball = $Ball as Ball
+@onready var brick_manager := $BrickManager as BrickManager
+@onready var ball := $Ball as Ball
+@onready var power_up_spawner := $PowerUpSpawner as PowerUpSpawner
+@onready var paddle := $Paddle as Paddle
 
 const pause_scene = preload("res://Scenes/pause_menu.tscn")
 const death_scene = preload("res://Scenes/death_ui.tscn")
+
+const power_up_chance: float = 0.07
+const max_lives: int = 9
 
 var bricks_left: int = 0
 var lives: int = 3
@@ -18,6 +23,7 @@ func _ready() -> void:
 	SignalBus.life_updated.emit(lives)
 	points = 0
 	SignalBus.points_updated.emit(points)
+	SignalBus.power_up_picked.connect(_on_power_up_picked)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -41,6 +47,11 @@ func _on_death_area_body_entered(body: Node2D) -> void:
 			ball.reset()
 
 
+func _on_death_area_area_entered(area: Area2D) -> void:
+	if area is PowerUp:
+		area.queue_free()
+
+
 func _on_brick_hit(brick: Brick) -> void:
 	bricks_left -= 1
 	brick.queue_free()
@@ -49,3 +60,21 @@ func _on_brick_hit(brick: Brick) -> void:
 	if (bricks_left <= 0):
 		await get_tree().create_timer(0.5).timeout
 		bricks_left = brick_manager.create_bricks(10, 4, 4)
+	else:
+		if randf() <= power_up_chance:
+			power_up_spawner.spawn_random_powerup(brick.global_position)
+
+
+func _on_power_up_picked(type: PowerUpData.Type) -> void:
+	match type:
+		PowerUpData.Type.LIFE:
+			lives += 1
+			lives = clampi(lives, 0, max_lives)
+			SignalBus.life_updated.emit(lives)
+		
+		PowerUpData.Type.WIDE_PADDLE:
+			paddle.apply_powerup_stretch(30, 5)
+		
+		PowerUpData.Type.FAST_BALL:
+			paddle.apply_power_up_speed(50, 5)
+ 
