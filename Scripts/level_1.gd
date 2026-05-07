@@ -17,6 +17,7 @@ var points: int = 0
 
 
 func _ready() -> void:
+	ExperienceManager.reset()
 	SignalBus.brick_hit.connect(_on_brick_hit)
 	bricks_left = brick_manager.create_bricks(10, 4, 4)
 	lives = 3
@@ -57,6 +58,7 @@ func _on_brick_hit(brick: Brick) -> void:
 	brick.queue_free()
 	points += 5
 	SignalBus.points_updated.emit(points)
+	ExperienceManager.add_xp(7)
 	if (bricks_left <= 0):
 		await get_tree().create_timer(0.5).timeout
 		bricks_left = brick_manager.create_bricks(10, 4, 4)

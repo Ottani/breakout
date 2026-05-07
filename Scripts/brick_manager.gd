@@ -19,7 +19,7 @@ func create_bricks(cols: int, rows: int, gap: int) -> int:
 	var y: float = area.position.y - (total_height / 2)
 	for j in rows:
 		for i in cols:
-			var brick: StaticBody2D = brick_scene.instantiate()
+			var brick: StaticBody2D = brick_scene.instantiate() as StaticBody2D
 			brick.position = Vector2(x, y)
 			x += brick_size.x + gap
 			add_child(brick)

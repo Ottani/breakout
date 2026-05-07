@@ -22,22 +22,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 18
+theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 18
 theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
+theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer" unique_id=925307283]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer" unique_id=1416399487]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer" unique_id=925307283]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="PointsLabel" type="Label" parent="Control/MarginContainer/HBoxContainer" unique_id=1811654441]
-layout_mode = 2
-text = "Points: 123456789"
-
-[node name="Control" type="Control" parent="Control/MarginContainer/HBoxContainer" unique_id=655062970]
+[node name="PointsLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1811654441]
+unique_name_in_owner = true
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
+text = "Points: 123456789"
 
-[node name="Lives" type="HBoxContainer" parent="Control/MarginContainer/HBoxContainer" unique_id=995670728]
+[node name="LevelLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1380337539]
+unique_name_in_owner = true
+clip_contents = true
 layout_mode = 2
+size_flags_horizontal = 3
+text = "Level: 123123"
+horizontal_alignment = 1
+
+[node name="Lives" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=995670728]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="XPBar" type="ProgressBar" parent="Control/MarginContainer/VBoxContainer" unique_id=1010369800]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_vertical = 10
+value = 20.0
+show_percentage = false
