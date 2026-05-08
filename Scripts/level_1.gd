@@ -19,7 +19,7 @@ var points: int = 0
 func _ready() -> void:
 	ExperienceManager.reset()
 	SignalBus.brick_hit.connect(_on_brick_hit)
-	bricks_left = brick_manager.create_bricks(10, 4, 4)
+	_create_bricks()
 	lives = 3
 	SignalBus.life_updated.emit(lives)
 	points = 0
@@ -55,13 +55,14 @@ func _on_death_area_area_entered(area: Area2D) -> void:
 
 func _on_brick_hit(brick: Brick) -> void:
 	bricks_left -= 1
+	var value: int = brick.xp
 	brick.queue_free()
-	points += 5
+	points += value
 	SignalBus.points_updated.emit(points)
-	ExperienceManager.add_xp(7)
+	ExperienceManager.add_xp(value)
 	if (bricks_left <= 0):
 		await get_tree().create_timer(0.5).timeout
-		bricks_left = brick_manager.create_bricks(10, 4, 4)
+		_create_bricks()
 	else:
 		if randf() <= power_up_chance:
 			power_up_spawner.spawn_random_powerup(brick.global_position)
@@ -80,3 +81,5 @@ func _on_power_up_picked(type: PowerUpData.Type) -> void:
 		PowerUpData.Type.FAST_BALL:
 			paddle.apply_power_up_speed(50, 5)
  
+func _create_bricks():
+	bricks_left = brick_manager.create_bricks(11, 6, 6, 4)

@@ -1,7 +1,7 @@
 extends Node
 
-@export var initial_xp_level_up: int = 50
-@export var xp_growth: float = 1.2
+var initial_xp_level_up: int = 10
+var xp_growth: float = 1.2
 
 var curr_xp: int = 0
 var curr_level: int = 1
