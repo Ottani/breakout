@@ -19,11 +19,15 @@ region = Rect2(0, 0, 16, 16)
 atlas = ExtResource("1_nxw3c")
 region = Rect2(48, 0, 16, 16)
 
-[node name="Paddle" type="CharacterBody2D" unique_id=2006980702]
+[node name="Paddle" type="CharacterBody2D" unique_id=2006980702 node_paths=PackedStringArray("left_sprite", "middle_sprite", "right_sprite", "anchor")]
 collision_layer = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_krcey")
+left_sprite = NodePath("LeftSprite")
+middle_sprite = NodePath("MiddleSprite")
+right_sprite = NodePath("RightSprite")
+anchor = NodePath("Marker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=422660871]
 rotation = 1.5707964

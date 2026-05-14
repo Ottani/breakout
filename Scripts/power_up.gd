@@ -2,9 +2,10 @@ class_name PowerUp
 extends Area2D
 
 @export var data: PowerUpData
-@onready var sprite = $AnimatedSprite2D as AnimatedSprite2D
+@export var sprite: AnimatedSprite2D
 
-const speed = Vector2(0, 150.0)
+const speed: Vector2 = Vector2(0, 150.0)
+
 
 func _ready() -> void:
 	if data:

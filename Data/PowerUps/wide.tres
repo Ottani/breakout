@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_wlrko")
 type = 1
+speed = 100.0
 animation_name = "wide"
 rarity = 25
 metadata/_custom_type_script = "uid://hgxbg7nlcpu4"

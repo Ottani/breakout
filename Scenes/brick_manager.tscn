@@ -5,8 +5,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ioduj"]
 size = Vector2(600, 200)
 
-[node name="BrickManager" type="Node2D" unique_id=341309759]
+[node name="BrickManager" type="Node2D" unique_id=341309759 node_paths=PackedStringArray("area")]
 script = ExtResource("1_ioduj")
+area = NodePath("Area2D/CollisionShape2D")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1601033929]
 monitoring = false

@@ -1,9 +1,9 @@
 extends StaticBody2D
 class_name Brick
 
-@onready var sprite_2d: Sprite2D = $Sprite2D as Sprite2D
+@export var sprite_2d: Sprite2D
 
-var xp = 1
+var xp: int = 1
 
 var level: int = 0:
 	set(value):

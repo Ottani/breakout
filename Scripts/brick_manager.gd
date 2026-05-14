@@ -1,10 +1,10 @@
 extends Node2D
 class_name BrickManager
 
-@onready var area:= $Area2D/CollisionShape2D as CollisionShape2D
+@export var area :CollisionShape2D
 var brick_scene: PackedScene = preload("res://Scenes/brick.tscn")
 var rect: Rect2
-var brick_size := Vector2(48.0, 16.0)
+var brick_size: Vector2 = Vector2(48.0, 16.0)
 
 
 func _ready() -> void:
@@ -15,14 +15,14 @@ func create_bricks(cols: int, rows: int, h_gap: int, v_gap: int) -> int:
 	var total_width: float = (cols * brick_size.x) + ((cols - 1) * h_gap)
 	var total_height: float = (rows * brick_size.y) + ((rows - 1) * v_gap)
 	var start_x: float = area.position.x - (total_width / 2) + (brick_size.x / 2)
-	var x := start_x
+	var x: float = start_x
 	var y: float = area.position.y - (total_height / 2)
 	@warning_ignore("integer_division")
 	var mod: int = rows / 3
-	for j in rows:
+	for j: int in rows:
 		@warning_ignore("integer_division")
-		var level = (rows - (j + 1)) / mod
-		for i in cols:
+		var level: int = (rows - (j + 1)) / mod
+		for i: int in cols:
 			var brick: Brick = brick_scene.instantiate() as Brick
 			brick.position = Vector2(x, y)
 			brick.level = level

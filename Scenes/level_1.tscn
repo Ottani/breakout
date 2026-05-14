@@ -79,8 +79,12 @@ sources/0 = SubResource("TileSetAtlasSource_7p6j4")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfk5q"]
 size = Vector2(639, 60)
 
-[node name="Level1" type="Node2D" unique_id=1142211454]
+[node name="Level1" type="Node2D" unique_id=1142211454 node_paths=PackedStringArray("brick_manager", "ball", "power_up_spawner", "paddle")]
 script = ExtResource("1_7p6j4")
+brick_manager = NodePath("BrickManager")
+ball = NodePath("Ball")
+power_up_spawner = NodePath("PowerUpSpawner")
+paddle = NodePath("Paddle")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=742079145]
 offset_left = -320.0

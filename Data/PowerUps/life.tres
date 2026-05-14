@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_jjlf3")
+speed = 100.0
 animation_name = "life"
 rarity = 10
 metadata/_custom_type_script = "uid://hgxbg7nlcpu4"

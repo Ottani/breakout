@@ -1,10 +1,11 @@
 extends CanvasLayer
 
-const HEART = preload("res://Scenes/heart.tscn")
-@onready var lives_container: HBoxContainer = %Lives as HBoxContainer
-@onready var points_label: Label = %PointsLabel as Label
-@onready var xp_bar: ProgressBar = %XPBar as ProgressBar
-@onready var level_label: Label = %LevelLabel as Label
+const HEART: PackedScene = preload("res://Scenes/heart.tscn")
+
+@export var lives_container: HBoxContainer
+@export var points_label: Label
+@export var xp_bar: ProgressBar
+@export var level_label: Label
 
 
 func _ready() -> void:
@@ -20,14 +21,14 @@ func update_lives(lives: int) -> void:
 		return
 	elif hearts > lives:
 		var todel: int = hearts - lives
-		for heart in lives_container.get_children():
+		for heart: Node in lives_container.get_children():
 			heart.queue_free()
 			todel -= 1
 			if todel == 0:
 				break
 	else:
 		var toadd: int = lives - hearts
-		for i in range(toadd):
+		for i: int in range(toadd):
 			lives_container.add_child(HEART.instantiate())
 
 

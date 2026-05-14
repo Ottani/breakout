@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var continue_button := $MarginContainer/VBoxContainer/VBoxContainer/ContinueButton as Button
+@export var continue_button: Button
 var is_closing: bool = false
 
 
@@ -23,7 +23,7 @@ func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
 
-func close():
+func close() -> void:
 	if is_closing:
 		return
 	is_closing = true

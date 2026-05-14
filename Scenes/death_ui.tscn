@@ -12,9 +12,12 @@ outline_color = Color(0.29803923, 0, 0, 1)
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="DeathUI" type="CanvasLayer" unique_id=1341276489]
+[node name="DeathUI" type="CanvasLayer" unique_id=1341276489 node_paths=PackedStringArray("try_again_button", "color_rect", "label")]
 process_mode = 3
 script = ExtResource("1_1dd5l")
+try_again_button = NodePath("Control/VBoxContainer/TryAgainButton")
+color_rect = NodePath("ColorRect")
+label = NodePath("Control/VBoxContainer/Label")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1599457819]
 anchors_preset = 15

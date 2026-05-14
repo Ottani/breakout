@@ -3,8 +3,12 @@
 [ext_resource type="Theme" uid="uid://c0oqgxtgm4gg5" path="res://Assets/theme.tres" id="1_jxero"]
 [ext_resource type="Script" uid="uid://b8smj6u8vtath" path="res://Scripts/ui.gd" id="1_nf4gj"]
 
-[node name="UI" type="CanvasLayer" unique_id=2025569689]
+[node name="UI" type="CanvasLayer" unique_id=2025569689 node_paths=PackedStringArray("lives_container", "points_label", "xp_bar", "level_label")]
 script = ExtResource("1_nf4gj")
+lives_container = NodePath("Control/MarginContainer/VBoxContainer/HBoxContainer/Lives")
+points_label = NodePath("Control/MarginContainer/VBoxContainer/HBoxContainer/PointsLabel")
+xp_bar = NodePath("Control/MarginContainer/VBoxContainer/XPBar")
+level_label = NodePath("Control/MarginContainer/VBoxContainer/HBoxContainer/LevelLabel")
 
 [node name="Control" type="Control" parent="." unique_id=451692027]
 layout_mode = 3
@@ -35,14 +39,12 @@ layout_mode = 2
 size_flags_vertical = 0
 
 [node name="PointsLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1811654441]
-unique_name_in_owner = true
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Points: 123456789"
 
 [node name="LevelLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1380337539]
-unique_name_in_owner = true
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -50,14 +52,12 @@ text = "Level: 123123"
 horizontal_alignment = 1
 
 [node name="Lives" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=995670728]
-unique_name_in_owner = true
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
 [node name="XPBar" type="ProgressBar" parent="Control/MarginContainer/VBoxContainer" unique_id=1010369800]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 size_flags_vertical = 10

@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bsg0mnoj1h6yd" path="res://Scripts/pause_menu.gd" id="1_emv3i"]
 
-[node name="PauseMenu" type="CanvasLayer" unique_id=1069514714]
+[node name="PauseMenu" type="CanvasLayer" unique_id=1069514714 node_paths=PackedStringArray("continue_button")]
 process_mode = 3
 script = ExtResource("1_emv3i")
+continue_button = NodePath("MarginContainer/VBoxContainer/VBoxContainer/ContinueButton")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1276911433]
 anchors_preset = 15

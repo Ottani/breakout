@@ -1,12 +1,12 @@
 extends Node2D
 
-@onready var brick_manager := $BrickManager as BrickManager
-@onready var ball := $Ball as Ball
-@onready var power_up_spawner := $PowerUpSpawner as PowerUpSpawner
-@onready var paddle := $Paddle as Paddle
+@export var brick_manager: BrickManager
+@export var ball: Ball
+@export var power_up_spawner: PowerUpSpawner
+@export var paddle: Paddle
 
-const pause_scene = preload("res://Scenes/pause_menu.tscn")
-const death_scene = preload("res://Scenes/death_ui.tscn")
+const pause_scene: PackedScene = preload("res://Scenes/pause_menu.tscn")
+const death_scene: PackedScene = preload("res://Scenes/death_ui.tscn")
 
 const power_up_chance: float = 0.07
 const max_lives: int = 9
@@ -38,7 +38,7 @@ func _on_death_area_body_entered(body: Node2D) -> void:
 		ball.current_state = Ball.State.DYING
 		lives -= 1
 		SignalBus.life_updated.emit(lives)
-		var tween := create_tween()
+		var tween: Tween = create_tween()
 		tween.tween_property(ball, 'scale', Vector2.ZERO, 0.4)\
 			.set_ease(Tween.EASE_IN)
 		await tween.finished
@@ -81,5 +81,5 @@ func _on_power_up_picked(type: PowerUpData.Type) -> void:
 		PowerUpData.Type.FAST_BALL:
 			paddle.apply_power_up_speed(50, 5)
  
-func _create_bricks():
+func _create_bricks() -> void:
 	bricks_left = brick_manager.create_bricks(11, 6, 6, 4)

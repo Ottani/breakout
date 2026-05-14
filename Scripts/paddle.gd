@@ -2,13 +2,12 @@ extends CharacterBody2D
 class_name Paddle
 
 @export var SPEED: float = 250.0
-@onready var left_sprite := $LeftSprite as Sprite2D
-@onready var middle_sprite := $MiddleSprite as Sprite2D
-@onready var right_sprite := $RightSprite as Sprite2D
-@onready var anchor := $Marker2D as Marker2D
+@export var left_sprite: Sprite2D
+@export var middle_sprite: Sprite2D
+@export var right_sprite: Sprite2D
+@export var anchor: Marker2D
 # this is safer to get cast errors before, but too noisy
 @onready var collision_shape: CapsuleShape2D = ($CollisionShape2D as CollisionShape2D).shape as CapsuleShape2D
-@onready var marker_2d := $Marker2D as Marker2D
 
 
 const _initial_width: float = 64.0
@@ -33,10 +32,10 @@ func _calculate_width() -> void:
 	_half_width = _curr_width / 2.0
 	left_sprite.position.x = -_half_width + (_sprite_size / 2.0)
 	right_sprite.position.x = _half_width - (_sprite_size / 2.0)
-	var target_middle_width := _curr_width - (2 * _sprite_size)
+	var target_middle_width: float = _curr_width - (2 * _sprite_size)
 	middle_sprite.scale.x = target_middle_width / _sprite_size
 	collision_shape.height = _curr_width
-	marker_2d.position.x = right_sprite.position.x
+	anchor.position.x = right_sprite.position.x
 
 
 func apply_powerup_stretch(amount: float, duration: float) -> void:
