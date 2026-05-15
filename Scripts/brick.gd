@@ -17,3 +17,8 @@ var level: int = 0:
 
 func _ready() -> void:
 	sprite_2d.frame = level
+
+
+func die() -> void:
+	SignalBus.brick_destroyed.emit(global_position, xp)
+	queue_free()

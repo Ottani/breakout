@@ -8,6 +8,10 @@ var curr_level: int = 1
 var level_up_xp: int
 
 
+func _ready() -> void:
+	SignalBus.brick_destroyed.connect(_on_brick_destroyed)
+
+
 func reset() -> void:
 	level_up_xp = initial_xp_level_up
 	curr_xp = 0
@@ -16,8 +20,8 @@ func reset() -> void:
 	SignalBus.level_updated.emit(curr_level)
 
 
-func add_xp(xp: int) -> void:
-	curr_xp += xp
+func _on_brick_destroyed(_pos: Vector2, score: int) -> void:
+	curr_xp += score
 	SignalBus.xp_updated.emit(curr_xp, level_up_xp)
 	while curr_xp >= level_up_xp:
 		curr_xp -= level_up_xp
@@ -27,3 +31,4 @@ func add_xp(xp: int) -> void:
 		SignalBus.level_updated.emit(curr_level)
 		level_up_xp = roundi(xp_growth * level_up_xp)
 		SignalBus.xp_updated.emit(curr_xp, level_up_xp)
+	

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cy116avjnkrnc" path="res://Scripts/brick_manager.gd" id="1_ioduj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ioduj"]
-size = Vector2(600, 200)
+size = Vector2(570, 200)
 
 [node name="BrickManager" type="Node2D" unique_id=341309759 node_paths=PackedStringArray("area")]
 script = ExtResource("1_ioduj")

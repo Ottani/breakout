@@ -1,0 +1,4 @@
+type,speed,animation,rarity
+LIFE,100.0,life,10
+WIDE_PADDLE,100.0,wide,25
+FAST_BALL,50.0,fast,75

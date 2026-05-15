@@ -2,13 +2,11 @@ extends Node2D
 
 @export var brick_manager: BrickManager
 @export var ball: Ball
-@export var power_up_spawner: PowerUpSpawner
 @export var paddle: Paddle
 
 const pause_scene: PackedScene = preload("res://Scenes/pause_menu.tscn")
 const death_scene: PackedScene = preload("res://Scenes/death_ui.tscn")
 
-const power_up_chance: float = 0.07
 const max_lives: int = 9
 
 var bricks_left: int = 0
@@ -18,7 +16,7 @@ var points: int = 0
 
 func _ready() -> void:
 	ExperienceManager.reset()
-	SignalBus.brick_hit.connect(_on_brick_hit)
+	SignalBus.brick_destroyed.connect(_on_brick_destroyed)
 	_create_bricks()
 	lives = 3
 	SignalBus.life_updated.emit(lives)
@@ -53,19 +51,13 @@ func _on_death_area_area_entered(area: Area2D) -> void:
 		area.queue_free()
 
 
-func _on_brick_hit(brick: Brick) -> void:
-	bricks_left -= 1
-	var value: int = brick.xp
-	brick.queue_free()
-	points += value
+func _on_brick_destroyed(_pos: Vector2, score: int) -> void:
+	points += score
 	SignalBus.points_updated.emit(points)
-	ExperienceManager.add_xp(value)
+	bricks_left -= 1
 	if (bricks_left <= 0):
 		await get_tree().create_timer(0.5).timeout
 		_create_bricks()
-	else:
-		if randf() <= power_up_chance:
-			power_up_spawner.spawn_random_powerup(brick.global_position)
 
 
 func _on_power_up_picked(type: PowerUpData.Type) -> void:
@@ -81,5 +73,6 @@ func _on_power_up_picked(type: PowerUpData.Type) -> void:
 		PowerUpData.Type.FAST_BALL:
 			paddle.apply_power_up_speed(50, 5)
  
+
 func _create_bricks() -> void:
-	bricks_left = brick_manager.create_bricks(11, 6, 6, 4)
+	bricks_left = brick_manager.create_bricks(10, 6, 6, 4)

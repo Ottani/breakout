@@ -1,5 +1,4 @@
-extends Resource
-class_name PowerUpData
+class_name PowerUpData extends Resource
 
 enum Type { LIFE, WIDE_PADDLE, FAST_BALL }
 

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvvw4"]
 size = Vector2(14, 12)
 
-[node name="PowerUpLife" type="Area2D" unique_id=1032528675 node_paths=PackedStringArray("sprite")]
+[node name="PowerUp" type="Area2D" unique_id=1032528675 node_paths=PackedStringArray("sprite")]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_p3i06")

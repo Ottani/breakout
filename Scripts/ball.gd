@@ -49,6 +49,7 @@ func _physics_process(delta: float) -> void:
 						velocity.y = signf(velocity.y) * min_y_tilt
 						velocity = velocity.normalized() * speed
 					if node_hit and node_hit.is_in_group("bricks"):
-						SignalBus.brick_hit.emit(node_hit)
+						(node_hit as Brick).die()
+						
 		State.DYING:
 			pass

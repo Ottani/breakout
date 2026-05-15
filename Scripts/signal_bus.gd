@@ -4,6 +4,9 @@ extends Node
 signal brick_hit(brick: Brick)
 
 @warning_ignore("unused_signal")
+signal brick_destroyed(pos: Vector2, score: int)
+
+@warning_ignore("unused_signal")
 signal life_updated(lives: int)
 
 @warning_ignore("unused_signal")
